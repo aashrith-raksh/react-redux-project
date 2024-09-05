@@ -1,12 +1,13 @@
 // Challenge / Exercise
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx"
-import EditEvent from "./pages/EditEvent.jsx"
-import EventsPage from "./pages/EventsPage.jsx"
-import NewEvent from "./pages/NewEvent.jsx"
-import EventDetail from "./pages/EventDetail.jsx"
-import MainNavigation from "./pages/MainNavigation.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import EditEvent from "./pages/EditEvent.jsx";
+import EventsLayout from "./pages/EventsLayout.jsx";
+import NewEvent from "./pages/NewEvent.jsx";
+import EventDetail from "./pages/EventDetail.jsx";
+import MainNavigationPage from "./pages/MainNavigationPage.jsx";
+import EventsPage from "./pages/EventsPage.jsx";
 
 // 1. Add five new (dummy) page components (content can be simple <h1> elements)
 //    - HomePage
@@ -28,20 +29,28 @@ import MainNavigation from "./pages/MainNavigation.jsx";
 // 7. Output the ID of the selected event on the EventDetailPage
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 
-const router = createBrowserRouter([{
-  path:'/',
-  element: <MainNavigation/>,
-  children:[
-    {path:"", element:<HomePage/>},
-    {path:"/events", element:<EventsPage/>},
-    {path:"/events/:eventId", element:<EventDetail/>},
-    {path:"/events/new", element:<NewEvent/>},
-    {path:"/events/:eventId/edit", element:<EditEvent/>}
-  ]
-}])
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainNavigationPage />,
+    children: [
+      { index: true, element: <HomePage /> },
+      {
+        path: "events",
+        element: <EventsLayout />,
+        children: [
+          { index: true, element: <EventsPage /> },
+          { path: ":eventId", element: <EventDetail /> },
+          { path: "new", element: <NewEvent /> },
+          { path: ":eventId/edit", element: <EditEvent /> },
+        ],
+      },
+    ],
+  },
+]);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;

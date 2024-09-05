@@ -1,32 +1,42 @@
-import { Link } from "react-router-dom";
+import EventsList from "../components/EventsList.jsx";
+
+const events = [
+  {
+    id: "e1",
+    title: "React Conference 2024",
+    date: "2024-09-15",
+    image: "https://example.com/images/react-conference.jpg",
+  },
+  {
+    id: "e2",
+    title: "JavaScript Workshop",
+    date: "2024-10-10",
+    image: "https://example.com/images/js-workshop.jpg",
+  },
+  {
+    id: "e3",
+    title: "CSS Grid Masterclass",
+    date: "2024-11-01",
+    image: "https://example.com/images/css-grid-masterclass.jpg",
+  },
+  {
+    id: "e4",
+    title: "Node.js Developer Summit",
+    date: "2024-12-05",
+    image: "https://example.com/images/nodejs-summit.jpg",
+  },
+  {
+    id: "e5",
+    title: "Frontend Dev Conference",
+    date: "2024-09-25",
+    image: "https://example.com/images/frontend-conference.jpg",
+  },
+];
 
 const EventsPage = () => {
   return (
     <div>
-      Events page
-      <ul>
-        <li>
-          <Link to={"/events/1"}>Event 1</Link>
-        </li>
-        <li>
-          <Link to={"/events/2"}>Event 2</Link>
-        </li>
-        <li>
-          <Link to={"/events/3"}>Event 3</Link>
-        </li>
-      </ul>
-
-      <ul>
-        <li>
-          <Link to={"/events/1/edit"}>Edit Event 1</Link>
-        </li>
-        <li>
-          <Link to={"/events/2/edit"}>Edit Event 2</Link>
-        </li>
-        <li>
-          <Link to={"/events/3/edit"}>Edit Event 3</Link>
-        </li>
-      </ul>
+      <EventsList events={events} />
     </div>
   );
 };
