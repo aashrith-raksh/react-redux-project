@@ -30,7 +30,6 @@ export async function loader({ request, params }) {
 }
 
 export async function action({ params, request }) {
-  console.log('acion')
   const eventId = params.eventId;
 
   const response = await fetch("http://localhost:8080/events/" + eventId, {
@@ -38,7 +37,6 @@ export async function action({ params, request }) {
   });
 
   if (!response.ok) {
-    console.log('error while deletin the event')
     throw json(
       {
         message: "Couldn't delete the event",

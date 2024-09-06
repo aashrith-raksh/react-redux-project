@@ -28,6 +28,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
+  console.log('>>>> POST endpoint hit\n')
   const data = req.body;
 
   let errors = {};
@@ -49,6 +50,7 @@ router.post('/', async (req, res, next) => {
   }
 
   if (Object.keys(errors).length > 0) {
+    console.log('input invalid, returning 422')
     return res.status(422).json({
       message: 'Adding the event failed due to validation errors.',
       errors,
@@ -57,6 +59,7 @@ router.post('/', async (req, res, next) => {
 
   try {
     await add(data);
+    console.log('New event successfully created, returning 200')
     res.status(201).json({ message: 'Event saved.', event: data });
   } catch (error) {
     next(error);
