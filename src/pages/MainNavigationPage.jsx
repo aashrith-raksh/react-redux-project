@@ -1,7 +1,8 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation.jsx";
 
 const MainNavigationPage = () => {
+
   return (
     <>
       <MainNavigation />
