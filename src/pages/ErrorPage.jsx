@@ -15,6 +15,9 @@ const ErrorPage = () => {
   if (error.status === 404) {
     message = "Path doesn't exist";
   }
+
+//   console.log('title',title);
+//   console.log('message',message);
   return (
     <>
       <MainNavigation />

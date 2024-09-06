@@ -7,6 +7,7 @@ import EventsLayout from "./pages/EventsLayout.jsx";
 import NewEvent from "./pages/NewEvent.jsx";
 import EventDetail, {
   loader as eventDetailLoader,
+  action as deleteEventAction,
 } from "./pages/EventDetail.jsx";
 import MainNavigationPage from "./pages/MainNavigationPage.jsx";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage.jsx";
@@ -27,9 +28,13 @@ const router = createBrowserRouter([
           {
             path: ":eventId",
             loader: eventDetailLoader,
-            id:'event-id',
+            id: "event-id",
             children: [
-              { index: true, element: <EventDetail /> },
+              {
+                index: true,
+                element: <EventDetail />,
+                action: deleteEventAction,
+              },
               ,
               { path: "edit", element: <EditEvent /> },
             ],
