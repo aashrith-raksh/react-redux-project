@@ -2,11 +2,12 @@ import { redirect, json } from "react-router-dom";
 import EventForm from "../components/EventForm";
 
 const NewEvent = () => {
-  return <EventForm />;
+  return <EventForm method={'POST'}/>;
 };
 
 export async function action({ request, params }) {
   const formData = await request.formData();
+  const eventId = params.eventId;
 
   const newEventData = {
     title: formData.get("title"),
@@ -15,8 +16,14 @@ export async function action({ request, params }) {
     date: formData.get("date"),
   };
 
-  const response = await fetch("http://localhost:8080/events", {
-    method: "POST",
+  let url = "http://localhost:8080/events/";
+
+  if(request.method === "PATCH"){
+    url = "http://localhost:8080/events/" + eventId
+  }
+
+  const response = await fetch(url, {
+    method: request.method,
     headers: {
       "Content-Type": "application/json",
     },
