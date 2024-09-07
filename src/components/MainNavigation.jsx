@@ -23,6 +23,14 @@ function MainNavigation() {
               Events
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? classes.active : undefined)}
+              to={"/auth"}
+            >
+              Create Account
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
