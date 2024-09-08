@@ -37,9 +37,11 @@ export async function action({ params, request }) {
   });
 
   if (!response.ok) {
+    const errData = await response.json();
+    console.log(errData)
     throw json(
       {
-        message: "Couldn't delete the event",
+        message: errData.message || "Couldn't delete the event",
       },
       {
         status: 500,
