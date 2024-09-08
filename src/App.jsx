@@ -12,7 +12,7 @@ import EventDetail, {
 import MainNavigationPage from "./pages/MainNavigationPage.jsx";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import AuthenticationPage from "./pages/Authentication.jsx";
+import AuthenticationPage, {action as authAction} from "./pages/Authentication.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
           { path: "new", element: <NewEvent />, action: newEventAction },
         ],
       },
-      { path: "auth", element: <AuthenticationPage /> },
+      { path: "auth", element: <AuthenticationPage />, action:authAction },
     ],
   },
 ]);
