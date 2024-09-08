@@ -6,6 +6,8 @@ const { isValidEmail, isValidText } = require('../util/validation');
 const router = express.Router();
 
 router.post('/signup', async (req, res, next) => {
+  console.log(">>> POST '/signup' HIT");
+
   const data = req.body;
   let errors = {};
 
