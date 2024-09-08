@@ -26,7 +26,7 @@ function MainNavigation() {
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? classes.active : undefined)}
-              to={"/auth"}
+              to={"/auth/?mode=signup"}
             >
               Create Account
             </NavLink>
