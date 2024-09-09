@@ -44,6 +44,13 @@ export async function action({ request, params }) {
   const token = redData.token;
 
   localStorage.setItem('token', `Bearer ${token}`);
+  const expirationDate = new Date();
+  expirationDate.setHours(expirationDate.getHours() + 1);
+
+  const expirationTime = expirationDate.toISOString();
+  localStorage.setItem('expiration', expirationTime);
+
+
 
   return redirect("/");
 }
