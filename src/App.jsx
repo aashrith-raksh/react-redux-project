@@ -9,17 +9,19 @@ import EventDetail, {
   loader as eventDetailLoader,
   action as deleteEventAction,
 } from "./pages/EventDetail.jsx";
-import MainNavigationPage from "./pages/MainNavigationPage.jsx";
+import MainNavigationPage, {loader as checkAuthLoader} from "./pages/MainNavigationPage.jsx";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import AuthenticationPage, {action as authAction} from "./pages/Authentication.jsx";
-import Logout , { logoutAction } from "./pages/Logout.jsx";
+import { logoutAction } from "./pages/Logout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainNavigationPage />,
     errorElement: <ErrorPage />,
+    id:'root',
+    loader:checkAuthLoader,
     children: [
       { index: true, element: <HomePage /> },
       {
