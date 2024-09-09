@@ -13,6 +13,7 @@ import MainNavigationPage from "./pages/MainNavigationPage.jsx";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import AuthenticationPage, {action as authAction} from "./pages/Authentication.jsx";
+import Logout , { logoutAction } from "./pages/Logout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
         ],
       },
       { path: "auth", element: <AuthenticationPage />, action:authAction },
+      { path: "logout", action:logoutAction },
     ],
   },
 ]);

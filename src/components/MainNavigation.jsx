@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Form, NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 
 function MainNavigation() {
@@ -8,7 +8,9 @@ function MainNavigation() {
         <ul className={classes.list}>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? classes.active : undefined)}
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
               to={"/"}
               end
             >
@@ -17,7 +19,9 @@ function MainNavigation() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? classes.active : undefined)}
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
               to={"/events"}
             >
               Events
@@ -25,11 +29,18 @@ function MainNavigation() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? classes.active : undefined)}
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
               to={"/auth/?mode=signup"}
             >
               Create Account
             </NavLink>
+          </li>
+          <li>
+            <Form action="/logout" method="post">
+              <button>Logout</button>
+            </Form>
           </li>
         </ul>
       </nav>
