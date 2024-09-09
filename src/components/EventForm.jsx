@@ -12,7 +12,7 @@ function EventForm({ method, event }) {
   }
 
   return (
-    <Form method={method} className={classes.form} action={action}>
+    <Form method={method} className={classes.form}>
       <p>
         <label htmlFor="title">Title</label>
         <input

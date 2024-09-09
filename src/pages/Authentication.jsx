@@ -40,6 +40,11 @@ export async function action({ request, params }) {
     );
   }
 
+  const redData = await response.json();
+  const token = redData.token;
+
+  localStorage.setItem('token', `Bearer ${token}`);
+
   return redirect("/");
 }
 

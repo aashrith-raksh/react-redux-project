@@ -1,13 +1,16 @@
 import { redirect, json } from "react-router-dom";
 import EventForm from "../components/EventForm";
+import { getAuthToken } from "../util";
 
 const NewEvent = () => {
-  return <EventForm method={'POST'}/>;
+  return <EventForm method={"POST"} />;
 };
 
 export async function action({ request, params }) {
   const formData = await request.formData();
   const eventId = params.eventId;
+
+  const token = getAuthToken();
 
   const newEventData = {
     title: formData.get("title"),
@@ -18,14 +21,15 @@ export async function action({ request, params }) {
 
   let url = "http://localhost:8080/events/";
 
-  if(request.method === "PATCH"){
-    url = "http://localhost:8080/events/" + eventId
+  if (request.method === "PATCH") {
+    url = "http://localhost:8080/events/" + eventId;
   }
 
   const response = await fetch(url, {
     method: request.method,
     headers: {
       "Content-Type": "application/json",
+      Authorization: token,
     },
     body: JSON.stringify(newEventData),
   });
