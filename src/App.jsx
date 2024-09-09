@@ -9,19 +9,24 @@ import EventDetail, {
   loader as eventDetailLoader,
   action as deleteEventAction,
 } from "./pages/EventDetail.jsx";
-import MainNavigationPage, {loader as checkAuthLoader} from "./pages/MainNavigationPage.jsx";
+import MainNavigationPage, {
+  loader as tokenLoader,
+} from "./pages/MainNavigationPage.jsx";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import AuthenticationPage, {action as authAction} from "./pages/Authentication.jsx";
+import AuthenticationPage, {
+  action as authAction,
+} from "./pages/Authentication.jsx";
 import { logoutAction } from "./pages/Logout.jsx";
+import { checkAuthLoader } from "./util.js";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainNavigationPage />,
     errorElement: <ErrorPage />,
-    id:'root',
-    loader:checkAuthLoader,
+    id: "root",
+    loader: tokenLoader,
     children: [
       { index: true, element: <HomePage /> },
       {
@@ -40,14 +45,24 @@ const router = createBrowserRouter([
                 action: deleteEventAction,
               },
               ,
-              { path: "edit", element: <EditEvent />, action: newEventAction },
+              {
+                path: "edit",
+                element: <EditEvent />,
+                action: newEventAction,
+                loader: checkAuthLoader,
+              },
             ],
           },
-          { path: "new", element: <NewEvent />, action: newEventAction },
+          {
+            path: "new",
+            element: <NewEvent />,
+            action: newEventAction,
+            loader: checkAuthLoader,
+          },
         ],
       },
-      { path: "auth", element: <AuthenticationPage />, action:authAction },
-      { path: "logout", action:logoutAction },
+      { path: "auth", element: <AuthenticationPage />, action: authAction },
+      { path: "logout", action: logoutAction },
     ],
   },
 ]);

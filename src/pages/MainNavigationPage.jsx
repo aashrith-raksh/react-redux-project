@@ -13,12 +13,7 @@ const MainNavigationPage = () => {
 
 export function loader() {
   const token = getAuthToken();
-
-  if (token) {
-    return token;
-  }
-
-  return null;
+  return token || null;
 }
 
 export default MainNavigationPage;
