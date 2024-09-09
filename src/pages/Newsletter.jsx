@@ -1,4 +1,4 @@
-import NewsletterSignup from '../components/NewsletterSignup';
+import NewsletterSignup from '../components/NewsLetterSignup';
 import PageContent from '../components/PageContent';
 
 function NewsletterPage() {
@@ -17,5 +17,10 @@ export async function action({ request }) {
 
   // send to backend newsletter server ...
   console.log(email);
+  // setTimeout(() => {
+    
+  // }, 1000);
   return { message: 'Signup successful!' };
+
+
 }
